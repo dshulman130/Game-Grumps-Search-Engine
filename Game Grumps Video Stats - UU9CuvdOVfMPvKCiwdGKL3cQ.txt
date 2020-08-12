@@ -1,0 +1,8 @@
+Here are some stats on the Game Grumps playlist: 
+No of videos :7247 
+Average length of video :0:16:36.363185 
+Total length of playlist :83 days, 13:44:04 
+At 1.25x : 66 days, 20:35:15.200000 
+At 1.50x : 55 days, 17:09:22.666667 
+At 1.75x : 47 days, 18:08:02.285714 
+At 2.00x : 41 days, 18:52:02
