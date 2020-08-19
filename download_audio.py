@@ -1,8 +1,9 @@
 import sys
 import youtube_dl
+import time
 
 # setting the user agent so that youtube can't stop be from downloading a massive amount of videos
-youtube_dl.utils.std_headers['User-Agent'] = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
+#youtube_dl.utils.std_headers['User-Agent'] = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
 
 # OK Time to download the youtube videos
 # Helper functions
@@ -55,10 +56,12 @@ bytesPerSecond = smallestFileSize / duration
 print(
     'smallest file size is: '+str(format_bytes(smallestFileSize))+', video - bytes per second: ' + str(bytesPerSecond)
 )
-print('Filesize of all Game Grumps videos based on this file: '+str(bytesPerSecond*a.total_seconds()))
+
 
 # ok now actually download the videos
-SAVE_PATH = 'E:\\Game Grumps Audio Files\\'
+# SAVE_PATH = 'E:\\Game Grumps Audio Files\\'
+SAVE_PATH = '%UserProfile%\\Music\\Game Grumps Audio'
+
 
 ydl_opts = {
     'format': 'worstaudio',
@@ -67,17 +70,29 @@ ydl_opts = {
         'preferredcodec': 'mp3',
         'preferredquality': '249',
     }],
-    'outtmpl':SAVE_PATH + '/%(title)s.%(ext)s',
+    'verbose': 'true',
+    'outtmpl': SAVE_PATH + '/%(title)s.%(ext)s',
     'cookiefile': '%UserProfile%\\Documents\\Google\\cookies.txt',
+    # 'playliststart': 0,
+    'prefer_free_formats': 'true',
+    'download_archive': 'gamegrumpsarchive.txt'
 }
 
 with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-    ydl.download(['https://www.youtube.com/watch?v=Ff291Mq2nJ0'])
+    # ydl.download(['https://www.youtube.com/watch?v=Ff291Mq2nJ0'])
     # commenting out the playlist right now as it wasn't working :(
-    # ydl.download(['https://www.youtube.com/playlist?list=UU9CuvdOVfMPvKCiwdGKL3cQ'])
+    start = time.time()
+    ydl.download(['https://www.youtube.com/playlist?list=UU9CuvdOVfMPvKCiwdGKL3cQ'])
+    end = time.time()
+
+print('total time elapsed for this playlist download: '+str(end - start))
 
 ###TODO Looks like there is some kind of 'age gating' issue with some of the videos. Need to install and run googlebot
 ### remove cookies: https://www.reddit.com/r/youtubedl/comments/hrieui/getting_error_youtube_said_unable_to_extract/
 
 ###TODO Ok tried user agent, still not working. Keep an eye on the reddit thread asking for help:
 ### https://www.reddit.com/r/youtubedl/comments/i86qsl/trying_to_download_the_audio_from_an_entire/
+
+###TODO READ THIS GUIDE, might help with the issues:
+### https://letswp.io/download-entire-youtube-channel/
+### ok it doesn't but it'll help when I need to automate the downloads in the future to update the site
