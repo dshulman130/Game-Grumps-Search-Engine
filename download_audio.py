@@ -87,12 +87,15 @@ with youtube_dl.YoutubeDL(ydl_opts) as ydl:
 
 print('total time elapsed for this playlist download: '+str(end - start))
 
-###TODO Looks like there is some kind of 'age gating' issue with some of the videos. Need to install and run googlebot
-### remove cookies: https://www.reddit.com/r/youtubedl/comments/hrieui/getting_error_youtube_said_unable_to_extract/
 
-###TODO Ok tried user agent, still not working. Keep an eye on the reddit thread asking for help:
-### https://www.reddit.com/r/youtubedl/comments/i86qsl/trying_to_download_the_audio_from_an_entire/
+# These comments below are no longer valid but leaving them in for learning purposes
 
-###TODO READ THIS GUIDE, might help with the issues:
-### https://letswp.io/download-entire-youtube-channel/
-### ok it doesn't but it'll help when I need to automate the downloads in the future to update the site
+# Looks like there is some kind of 'age gating' issue with some of the videos. Need to install and run googlebot
+# remove cookies: https://www.reddit.com/r/youtubedl/comments/hrieui/getting_error_youtube_said_unable_to_extract/
+
+# Ok tried user agent, still not working. Keep an eye on the reddit thread asking for help:
+# https://www.reddit.com/r/youtubedl/comments/i86qsl/trying_to_download_the_audio_from_an_entire/
+
+# READ THIS GUIDE, might help with the issues:
+# https://letswp.io/download-entire-youtube-channel/
+# ok it doesn't but it'll help when I need to automate the downloads in the future to update the site
